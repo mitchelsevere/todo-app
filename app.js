@@ -10,12 +10,19 @@ const passport = require('passport');
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(express.static('public'));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.render('index', {
+    currentPage: 'Home',
+    documentTitle: 'Todo App',
+  });
 });
 
 app.get('*', (req, res) => {
