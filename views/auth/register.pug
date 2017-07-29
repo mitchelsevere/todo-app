@@ -1,0 +1,12 @@
+doctype html
+html(lang="en")
+  include ../partials/head.pug
+  body
+    div.movie-container
+      form(method="POST", action="/auth/register")
+        input(type="text", name="username", placeholder="Enter username" required)
+        input(type="email", name="email", placeholder="Enter email" required)
+        input(type="password", name="password", placeholder="Enter password" required)
+        input(type="text", name="firstname", placeholder="First Name" required)
+        input(type="text", name="lastname", placeholder="Last Name" required)
+        input(type="submit", value="Register!")
