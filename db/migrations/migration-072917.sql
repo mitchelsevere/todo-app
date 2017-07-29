@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS users (
+  id BIGSERIAL PRIMARY KEY,
+  username VARCHAR(255) UNIQUE NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password_digest TEXT NOT NULL,
+  firstname VARCHAR(255),
+  lastname VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS todos (
+  id BIGSERIAL PRIMARY KEY,
+  title VARCHAR(255),
+  category VARCHAR(255),
+  description VARCHAR(1024),
+  user_id INTEGER REFERENCES users(id)
+);
