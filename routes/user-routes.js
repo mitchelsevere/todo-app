@@ -6,7 +6,7 @@ const userController = require('../controllers/user-controller');
 // require auth helper function
 const authHelpers = require('../services/auth/auth-helpers');
 
-// get user page
+// get user page (login required)
 userRouter.get('/', authHelpers.loginRequired, userController.index);
 
 // export userRouter
