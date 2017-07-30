@@ -1,0 +1,9 @@
+doctype html
+html(lang="en")
+  include ../partials/head.pug
+  body
+    form(method="POST", action="/todos")
+      input(type="text", name="title", placeholder="Task" required)
+      input(type="text", name="category", placeholder="Category")
+      input(rows="6", cols="50", name="description", placeholder="Details")
+      input(type="submit", value="Add!")
