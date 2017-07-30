@@ -1,7 +1,8 @@
+// require todo object from model
 const Todo = require('../models/todo');
-
+// create an empty controller object
 const todoController = {};
-
+// main todo page, get every todo
 todoController.index = (req, res) => {
   Todo.getAll()
   .then(todos => {
@@ -14,7 +15,7 @@ todoController.index = (req, res) => {
     res.status(500).json(err);
   });
 }
-
+// main todo page, able to show detail on a selected todo
 todoController.show = (req, res) => {
   Todo.getById(req.params.id)
   .then(todo => {
@@ -27,7 +28,7 @@ todoController.show = (req, res) => {
     res.status(500).json(err);
   });
 }
-
+// add todo page, able to create a new todo
 todoController.create = (req, res) => {
   Todo.add({
     title: req.body.title,
@@ -40,7 +41,7 @@ todoController.create = (req, res) => {
     res.status(500).json(err);
   });
 }
-
+// on a selected todo, able to update a todo
 todoController.update = (req, res) => {
   Todo.update({
     title: req.body.title,
@@ -53,7 +54,7 @@ todoController.update = (req, res) => {
     res.status(500).json(err);
   });
 }
-
+// on edit todo page, edit the selected todo
 todoController.edit = (req, res) => {
   Todo.byId(req.params.id)
   .then(todo => {
@@ -66,7 +67,7 @@ todoController.edit = (req, res) => {
     res.status(500).json(err);
   });
 }
-
+// on a selected todo, delete todo and redirect to main todo page
 todoController.delete = (req, res) => {
   Todo.delete(req.params.id)
   .then(() => {
@@ -76,5 +77,5 @@ todoController.delete = (req, res) => {
     res.status(500).json(err);
   });
 }
-
+// export todoController
 module.exports = todoController;
