@@ -10,7 +10,7 @@ Todo.getAll = () => {
 Todo.getById = (id) => {
   return db.one(`
   SELECT * FROM todos
-  WHERE id = $/id/
+  WHERE id = $1
   `, [id]);
 }
 // create a new todo
@@ -19,7 +19,7 @@ Todo.add = (todo, userid) => {
   INSERT INTO todos
   (title, category, description, user_id)
   VALUES 
-  ($/title/, $/category/, $/description/, $/user_id/)
+  ($1 $2, $3, $4)
   RETURNING * 
   `, [todo.title, todo.category, todo.description, userid]);
 }
@@ -27,10 +27,10 @@ Todo.add = (todo, userid) => {
 Todo.update = (todo, id) => {
   return db.one(`
   UPDATE todos SET
-  title = $/title/,
-  category = $/category/,
-  description = $/description/,
-  WHERE id = $/id/
+  title = $1,
+  category = $2,
+  description = $3,
+  WHERE id = $4
   RETURNING *
   `, [todo.title, todo.category, todo.description, id]);
 }
@@ -38,7 +38,7 @@ Todo.update = (todo, id) => {
 Todo.delete = (id) => {
   return db.none(`
   DELETE FROM todos
-  WHERE id = $/id/
+  WHERE id = $1
   `, [id]);
 }
 // export todo object
