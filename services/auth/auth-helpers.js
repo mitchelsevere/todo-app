@@ -13,3 +13,16 @@ const loginRedirect = (req, res, next) => {
   }
   return next();
 }
+// function to redirect user to login page if not logged in
+const loginRequired = (req, res, next) => {
+  if (!req.user) {
+    return res.redirect('/auth/login');
+  }
+  return next();
+}
+
+module.exports = {
+  comparePass,
+  loginRedirect,
+  loginRequired,
+}
