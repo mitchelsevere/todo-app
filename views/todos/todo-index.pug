@@ -2,8 +2,9 @@ doctype html
 html(lang="en")
   include ../partials/head.pug
   body
-    h1 New Test. New Test.
-    p.
-       More Lorem Ipsum: <br>
-       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam magni vel facilis beatae vitae unde possimus debitis, id, <br>
-       quia amet similique placeat pariatur quis commodi, saepe illo odio autem adipisci.
+    include ../partials/nav.pug
+    div#todo-list
+      button#add-todo Add New Todo
+      - for (var x = 0; x < 3; x++)
+        li item
+    include ../partials/footer.pug
