@@ -2,6 +2,8 @@ doctype html
 html(lang="en")
   include partials/head.pug
   body
-    h1 Hello World. This is a test.
-    p.
-       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam magni vel facilis beatae vitae unde possimus debitis, id, quia amet similique placeat pariatur quis commodi, saepe illo odio autem adipisci.
+    include partials/nav.pug
+    div#landing
+      h1.main-text Welcome to my<br>to-do app
+      button#enter To-Dos
+    include partials/footer.pug
