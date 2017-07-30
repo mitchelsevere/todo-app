@@ -7,21 +7,14 @@ const passport = require('../services/auth/local');
 const authHelpers = require('../services/auth/auth-helpers');
 // require user controller
 const userController = require('../controllers/user-controller');
-
 // setting up auth routes
+
 // get login
 authRouter.get('/login', authHelpers.loginRedirect, (req, res) => {
   res.render('auth/login', {
     currentPage: 'Login',
   });
 });
-// post on login
-authRouter.post('/login', passport.authenticate('local', {
-    successRedirect: '/user',
-    failureRedirect: 'auth/login',
-    failureFlash: true,
-  })
-)
 // get registration
 authRouter.get('/register', authHelpers.loginRedirect, (req, res) => {
   res.render('auth/register', {
@@ -30,6 +23,13 @@ authRouter.get('/register', authHelpers.loginRedirect, (req, res) => {
 });
 // post on registration
 authRouter.post('/register', userController.create);
+// post on login
+authRouter.post('/login', passport.authenticate('local', {
+    successRedirect: '/user', 
+    failureRedirect: '/auth/login',
+    failureFlash: true,
+  })
+)
 
 authRouter.get('logout', (req, res) => {
   req.logout();
