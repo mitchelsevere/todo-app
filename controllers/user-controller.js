@@ -6,9 +6,16 @@ const User = require('../models/user');
 const userController = {};
 // user index page
 userController.index = (req, res) => {
-  res.json({
-    user: req.user,
-    data: 'Put a user profile on this route'
+  User.getUserTodos(req.user.id)
+  .then(movies => {
+      res.json({
+      user: req.user,
+      data: 'Put a user profile on this route',
+      todos: todos,
+    });
+  }).catch(err => {
+    console.log(err);
+    res.status(500).json({err: err});
   });
 }
 // create new user on register page
