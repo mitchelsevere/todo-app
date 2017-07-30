@@ -42,9 +42,15 @@ app.get('/', (req, res) => {
     documentTitle: 'Todo App',
   });
 });
-// import routes and use the route
+// import routes from todos and use the route
 const todoRoutes = require('./routes/todo-routes.js');
 app.use('/todos', todoRoutes);
+// import routes from auth 
+const authRoutes = require('./routes/auth-routes');
+app.use('/auth', authRoutes);
+// import routes from user
+const userRoutes = require('./routes/user-routes');
+app.use('/user', userRoutes);
 // catch all for routes that don't exist
 app.get('*', (req, res) => {
   res.status(404).send('Not Found!');
