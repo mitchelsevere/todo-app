@@ -4,6 +4,13 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 // create empty controller object
 const userController = {};
+// user index page
+userController.index = (req, res) => {
+  res.json({
+    user: req.user,
+    data: 'Put a user profile on this route'
+  });
+}
 // create new user on register page
 userController.create = (req, res) => {
   const salt = bcrypt.genSaltSync();
