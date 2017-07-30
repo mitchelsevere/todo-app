@@ -2,18 +2,18 @@ const db = require('../db/config');
 
 const Todo = {};
 
-Todo.all = () => {
+Todo.getAll = () => {
   return db.query('SELECT * FROM todos');
 }
 
-Todo.byId = (id) => {
+Todo.getById = (id) => {
   return db.one(`
   SELECT * FROM todos
   WHERE id = $/id/
   `, [id]);
 }
 
-Todo.create = (todo, userid) => {
+Todo.add = (todo, userid) => {
   return db.one(`
   INSERT INTO todos
   (title, category, description, user_id)
