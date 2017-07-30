@@ -19,5 +19,13 @@ User.add = (user) => {
   RETURNING *
   `, [user.username, user.email, user.password_digest, user.firstname, user.lastname]);
 }
+
+// get user's todos
+User.getUserTodos = (id) => {
+  return db.many(`
+  SELECT * FROM todos
+  WHERE user_id = $1
+  `, [id]);
+}
 // exports user object
 module.exports = User;
