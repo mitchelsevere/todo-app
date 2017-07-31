@@ -46,7 +46,12 @@ footer {
   align-items: center;
 }
 
-#landing {
+h1 {
+  font-size: 5em;
+  margin-bottom: 80px;
+}
+/* Specific Styles */
+#landing, .auth-container {
   background-color: #FFFFF7;
   height: 80vh;
   width: 100%;
@@ -62,31 +67,84 @@ footer {
   font-weight: lighter;
 }
 
-#enter {
-  border: none;
-  outline: none;
+.button {
   border-radius: 2px;
   width: 15vw;
   height: 7vh;
   border: 1px solid #E2A89A;
   background-color: #FFF;
+  color: #282830;
   cursor: pointer;
   font-size: 2em;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: 500ms;
 }
 
-#enter:hover {
+.button:hover {
   background-color: #E2A89A;
   color: #FFFFF7;
 }
 
+#add-todo {
+  font-size: 1.4em;
+}
+
+.input-button {
+  margin: 0 auto;
+}
+
+.credentials {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid black;
+  font-size: 3em;
+  text-align: center;
+  margin: 50px; 
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"] {
+  background-color: transparent;
+}
+
+.auth-container p, a {
+  font-size: 2em;
+}
+
 @media (min-width: 1200px) {
-  #landing {
-    background-color: red;
+  .top-nav a {
+    font-size: 1.5em;
   }
+
   .main-text {
     font-size: 4em;
     font-weight: lighter;
+  }
+
+  h1 {
+    font-size: 3.5em;
+    margin-bottom: 120px;
+  }
+
+  .auth-container form {
+    font-size: 0.5em;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .auth-container input {
+    margin-top: -20px;
+  }
+
+  .auth-container p, a {
+    font-size: 1em;
   }
 }
 
