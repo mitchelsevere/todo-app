@@ -2,8 +2,13 @@ doctype html
 html(lang="en")
   include ../partials/head.pug
   body
-    div.movie-container
+    include ../partials/nav.pug
+    div.auth-container
+      h1 Login
       form(method="POST", action="/auth/login")
-        input(type="text", name="username", placeholder="Enter username" required)
-        input(type="password", name="password", placeholder="Enter password" required)
-        input(type="submit", value="Log in!")
+        input(type="text", name="username", placeholder="Enter username" required).credentials
+        input(type="password", name="password", placeholder="Enter password" required).credentials
+        input(type="submit", value="Log in!").button.input-button
+      p New user?
+      a(href="/auth/register") Create an account
+    include ../partials/footer.pug
